@@ -12,6 +12,8 @@ def show_entries(entries):
 
 st.write("NOTE: Shows only the latest 1000 entries")
 
+st.write("DB Host:", st.secrets["mysql"]["host"])
+
 if(st.checkbox(label ="### See 100 ticks leaderboard 🏆")): 
     entries = mysql_custom_functions.show_leaderboard_of_tick_100()
     show_entries(entries)
