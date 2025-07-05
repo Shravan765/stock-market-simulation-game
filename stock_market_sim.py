@@ -24,7 +24,7 @@ if("player_name" not in st.session_state):
     st.session_state.player_name = ""
     
 if(st.session_state.game_started == False):
-    st.write("### ⭐ STOCK SAMPEDE! ⭐")
+    st.write("### ⭐ STOCK STAMPEDE! ⭐")
     player_name = st.text_input(label="How would you like to be called as ?", key="initialise_player_name")
     ticks_to_play = st.selectbox(label="Choose the duration of the game in TICKS (default selected is 100) : ", options=[100,300])
     st.write("##### Tips FYI")
