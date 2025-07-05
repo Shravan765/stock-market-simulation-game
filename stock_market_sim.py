@@ -4,6 +4,7 @@ import mysql_custom_functions
 import pandas as pd
 import numpy as np
 import streamlit_autorefresh
+import pymysql
 
 if("game_started" not in st.session_state):
     st.session_state.game_started = False
