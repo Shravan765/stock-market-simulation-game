@@ -1,6 +1,7 @@
 import streamlit as st
 import mysql_custom_functions
 import pandas as pd
+import pymysql
 
 st.write("### ⭐ STOCK SAMPEDE! ⭐")
 st.write("Leaderboard below!")
