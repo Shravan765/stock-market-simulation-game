@@ -71,23 +71,25 @@ elif(st.session_state.game_ended == 1):
     st.balloons()
     st.write(f"##### Duration selected : `{st.session_state.end_at_tick} ticks` ")
     st.write(f"#### Your final PnL `{st.session_state.player.show_PnL(st.session_state.stock.price)}`")
-    
-    #checking before inserting the size
-    if(st.session_state.end_at_tick == 100):
-        entries = mysql_custom_functions.show_leaderboard_of_tick_100()
-        if(len(entries) > 1000):
-            mysql_custom_functions.delete_oldest_entry_if_1000_entries_are_reached(100)
-    elif(st.session_state.end_at_tick == 300):
-        entries = mysql_custom_functions.show_leaderboard_of_tick_300()
-        if(len(entries) > 1000):
-            mysql_custom_functions.delete_oldest_entry_if_1000_entries_are_reached(300)
-    if st.session_state.inserted == False:
-        mysql_custom_functions.insert_entry(st.session_state.player_name,
-                                            st.session_state.player.show_PnL(st.session_state.stock.price),
+    try:
+        #checking before inserting the size
+        if(st.session_state.end_at_tick == 100):
+            entries = mysql_custom_functions.show_leaderboard_of_tick_100()
+            if(len(entries) > 1000):
+                mysql_custom_functions.delete_oldest_entry_if_1000_entries_are_reached(100)
+        elif(st.session_state.end_at_tick == 300):
+            entries = mysql_custom_functions.show_leaderboard_of_tick_300()
+            if(len(entries) > 1000):
+                mysql_custom_functions.delete_oldest_entry_if_1000_entries_are_reached(300)
+        if st.session_state.inserted == False:
+            mysql_custom_functions.insert_entry(st.session_state.player_name,
+                                                st.session_state.player.show_PnL(st.session_state.stock.price),
+                                                st.session_state.end_at_tick)
+            st.session_state.inserted = True
+        position = mysql_custom_functions.show_position_at_end(st.session_state.player.show_PnL(st.session_state.stock.price),
                                             st.session_state.end_at_tick)
-        st.session_state.inserted = True
-    position = mysql_custom_functions.show_position_at_end(st.session_state.player.show_PnL(st.session_state.stock.price),
-                                        st.session_state.end_at_tick)
+    except pymysql.err.InterfaceError:
+        st.error("Database temporarily unavailable. Please try again.")
     st.write(f"#### Your final Position `{position}`")
     st.write(f"Caveat : this position indicates {position-1} players did better than you right now")
 
