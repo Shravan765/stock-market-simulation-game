@@ -87,12 +87,12 @@ elif(st.session_state.game_ended == 1):
                                                 st.session_state.player.show_PnL(st.session_state.stock.price),
                                                 st.session_state.end_at_tick)
             st.session_state.inserted = True
+        position = mysql_custom_functions.show_position_at_end(st.session_state.player.show_PnL(st.session_state.stock.price),
+                                            st.session_state.end_at_tick)
+        st.write(f"#### Your final Position `{position}`")
+        st.write(f"Caveat : this position indicates {position-1} players did better than you right now")
     except pymysql.err.InterfaceError:
         st.error("Database temporarily unavailable. Please try again.")
-    position = mysql_custom_functions.show_position_at_end(st.session_state.player.show_PnL(st.session_state.stock.price),
-                                            st.session_state.end_at_tick)
-    st.write(f"#### Your final Position `{position}`")
-    st.write(f"Caveat : this position indicates {position-1} players did better than you right now")
 
     if(st.button(label="Replay", help="Start the game fresh again!", key="replay_game")):
         del st.session_state.game_started
