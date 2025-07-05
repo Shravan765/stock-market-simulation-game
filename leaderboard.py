@@ -3,7 +3,7 @@ import mysql_custom_functions
 import pandas as pd
 import pymysql
 
-st.write("### ⭐ STOCK SAMPEDE! ⭐")
+st.write("### ⭐ STOCK STAMPEDE! ⭐")
 st.write("Leaderboard below!")
 def show_entries(entries):
     try:
