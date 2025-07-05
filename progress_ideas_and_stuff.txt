@@ -1,0 +1,31 @@
+day 1: 02/07/2025
+12:00 pm to 13:30 pm
+designed the name entry, UI UX
+ideas : Some events of the stock moving up and down along with random flucuations
+
+day 2:
+2pm to 4pm
+designed stock, player and overall UI
+ideas : premature exit, tick limit (timed game), instructions at start, maintaining leaderboard
+
+day 3:
+7:40pm to 8:20 pm
+gave an end screen to when player ends, created a condition for game ending by tick
+havent done tick based ending mechanism, involves giving option at start and storing that in
+    st.session_state and remembering to delete it 
+/*
+Option A: Use a Cloud Database
+Free-tier options: PlanetScale, Neon (for Postgres), [Render MySQL], [AWS RDS], [Google Cloud SQL].
+
+These give you a remote DB URL you can access from your Streamlit app.
+*/
+i plan to do this
+
+day 4:
+Name : stock_stampede
+
+⚠️ VERY IMPORTANT: Add .streamlit/secrets.toml to your .gitignore so it isn't pushed to GitHub.
+I'm using pymysql cause streamlit works better with pure py lib
+Did the ending, the database, worked from 6:40pm to 9:00pm 
+
+
