@@ -16,11 +16,15 @@ st.write("NOTE: Shows only the latest 1000 entries")
 #st.write("DB Host:", st.secrets["mysql"]["host"])
 
 if(st.checkbox(label ="### See 100 ticks leaderboard 🏆")): 
+    '''
     try:
         entries = mysql_custom_functions.show_leaderboard_of_tick_100()
         show_entries(entries)
     except pymysql.err.InterfaceError:
         st.error("Database temporarily unavailable. Please try again.")
+    '''
+    entries = mysql_custom_functions.show_leaderboard_of_tick_100()
+    show_entries(entries)
 
 if(st.checkbox(label ="### See 300 ticks leaderboard 🏆")):
     try:
