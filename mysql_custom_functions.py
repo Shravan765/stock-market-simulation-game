@@ -48,6 +48,7 @@ def insert_entry(player_name:str, PnL:float, tick_type:int):
     conn.close()
 
 def show_position_at_end(PnL:float, tick_type:int):
+    st.write("Showing position")
     conn = get_connection()
     cursor = conn.cursor()
     values = (PnL,)
@@ -55,7 +56,9 @@ def show_position_at_end(PnL:float, tick_type:int):
         query = "SELECT count(*) FROM leaderboard_100_ticks WHERE PnL > %s"
     else:
         query = "SELECT count(*) FROM leaderboard_300_ticks WHERE PnL > %s"
+    st.write("Showing position 2")
     cursor.execute(query, values)
+    st.write("Showing position 3")
     output = cursor.fetchone()
     cursor.close()
     conn.close()
