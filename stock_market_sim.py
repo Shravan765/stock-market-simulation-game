@@ -72,12 +72,12 @@ elif(st.session_state.game_ended == 1):
     st.balloons()
     st.write(f"##### Duration selected : `{st.session_state.end_at_tick} ticks` ")
     st.write(f"#### Your final PnL `{st.session_state.player.show_PnL(st.session_state.stock.price)}`")
+    st.write("##### Check the Leaderboard Section!")
+    st.rerun()
     try:
         #checking before inserting the size
         if(st.session_state.end_at_tick == 100):
-            st.write("loading...")
             entries = mysql_custom_functions.show_leaderboard_of_tick_100()
-            st.write("loading...")
             if(len(entries) > 1000):
                 mysql_custom_functions.delete_oldest_entry_if_1000_entries_are_reached(100)
         elif(st.session_state.end_at_tick == 300):
