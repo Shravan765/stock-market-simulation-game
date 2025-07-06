@@ -46,6 +46,7 @@ def insert_entry(player_name:str, PnL:float, tick_type:int):
     conn.commit()
     cursor.close()
     conn.close()
+    st.write("here")
 
 def show_position_at_end(PnL:float, tick_type:int):
     conn = get_connection()
