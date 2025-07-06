@@ -6,13 +6,10 @@ import pymysql
 st.write("### ⭐ STOCK STAMPEDE! ⭐")
 st.write("Leaderboard below!")
 def show_entries(entries):
-    try:
-        df = pd.DataFrame(entries, columns=["player_name", "datetime", "PnL"])
-        styled_df = df.style.background_gradient(
-        cmap="RdYlGn", subset=["PnL"])
-        st.dataframe(styled_df)
-    except pymysql.err.InterfaceError:
-        st.error("Database temporarily unavailable. Please try again.")
+    df = pd.DataFrame(entries, columns=["player_name", "datetime", "PnL"])
+    styled_df = df.style.background_gradient(
+    cmap="RdYlGn", subset=["PnL"])
+    st.dataframe(styled_df)
 
 st.write("NOTE: Shows only the latest 1000 entries")
 
