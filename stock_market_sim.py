@@ -70,10 +70,10 @@ elif(st.session_state.game_ended == -1):
 elif(st.session_state.game_ended == 1):
     st.write("### You never gave up and completed the game!")
     st.balloons()
-    st.write("loading...")
     st.write(f"##### Duration selected : `{st.session_state.end_at_tick} ticks` ")
     st.write(f"#### Your final PnL `{st.session_state.player.show_PnL(st.session_state.stock.price)}`")
     try:
+        st.write("loading...")
         #checking before inserting the size
         if(st.session_state.end_at_tick == 100):
             entries = mysql_custom_functions.show_leaderboard_of_tick_100()
