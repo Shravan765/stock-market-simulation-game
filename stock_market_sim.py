@@ -72,7 +72,7 @@ elif(st.session_state.game_ended == 1):
     st.balloons()
     st.write(f"##### Duration selected : `{st.session_state.end_at_tick} ticks` ")
     st.write(f"#### Your final PnL `{st.session_state.player.show_PnL(st.session_state.stock.price)}`")
-    st.write("##### Check the Leaderboard Section!")
+    st.write("##### Check the Leaderboard Section to see the top scores!(while we load your position)")
     try:
         #checking before inserting the size
         if(st.session_state.end_at_tick == 100):
